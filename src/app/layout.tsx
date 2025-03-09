@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Settings } from "luxon";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,6 +12,10 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+// デフォルトを変更
+Settings.defaultLocale = "ja-JP";
+Settings.defaultZone = "jst";
 
 export const metadata: Metadata = {
   title: "Create Next App",

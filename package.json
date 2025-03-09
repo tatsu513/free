@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "luxon": "^3.5.0",
     "next": "15.2.1",
     "qrcode.react": "^4.2.0",
     "react": "^19.0.0",
@@ -19,11 +20,17 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/luxon": "^3.4.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@typescript-eslint/eslint-plugin": "^8.26.0",
     "eslint": "^9",
     "eslint-config-next": "15.2.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

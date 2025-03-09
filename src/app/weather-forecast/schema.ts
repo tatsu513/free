@@ -20,3 +20,15 @@ export const weatherApiSchema = z.object({
     speed: z.number(),
   }),
 });
+
+// 3時間ごとの天気情報のスキーマ
+export const hourlyWeatherApiSchema = z.object({
+  list: z.array(
+    z.object({
+      main: weatherApiSchema.shape.main,
+      weather: weatherApiSchema.shape.weather,
+      wind: weatherApiSchema.shape.wind,
+      dt: z.number(),
+    })
+  ),
+});
