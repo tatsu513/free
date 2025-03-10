@@ -14,6 +14,7 @@ export const weatherApiSchema = z.object({
   weather: z.array(
     z.object({
       description: z.string(),
+      icon: z.string(),
     })
   ),
   wind: z.object({

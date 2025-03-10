@@ -14,7 +14,6 @@ const getLatLon = async (city: string) => {
     throw new Error("位置情報の取得に失敗しました");
   }
   const geoData = await geoRes.json();
-  console.log({ geoData });
   if (geoData.length === 0) {
     throw new Error("指定された都市が見つかりません");
   }
@@ -37,7 +36,6 @@ export const fetchWeather = async (city: string) => {
   const res = await weatherRes.json();
   const result = weatherApiSchema.safeParse(res);
   if (!result.success) {
-    console.log({ err: result.error, res });
     throw new Error("天気情報の変換に失敗しました");
   }
   return result.data;
@@ -56,7 +54,6 @@ export const fetchFiveDaysWeather = async (city: string) => {
   const res = await weatherRes.json();
   const result = hourlyWeatherApiSchema.safeParse(res);
   if (!result.success) {
-    console.error({ err: result.error, res });
     throw new Error("5日間の天気情報の変換に失敗しました");
   }
   return res;

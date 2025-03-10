@@ -6,6 +6,7 @@ import eslintPluginReact from "eslint-plugin-react";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
 import eslintPluginTS from "@typescript-eslint/eslint-plugin";
 import eslintPluginJSXA11y from "eslint-plugin-jsx-a11y";
+import eslintPluginUnusedImports from "eslint-plugin-unused-imports";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -32,6 +33,7 @@ const eslintConfig = [
       "react-hooks": eslintPluginReactHooks,
       "@typescript-eslint": eslintPluginTS,
       "jsx-a11y": eslintPluginJSXA11y,
+      "unused-imports": eslintPluginUnusedImports,
     },
     rules: {
       // Prettier のルールを ESLint に適用
@@ -49,6 +51,16 @@ const eslintConfig = [
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { argsIgnorePattern: "^_" },
+      ],
+      "unused-imports/no-unused-imports": "warn",
+      "unused-imports/no-unused-vars": [
+        "warn",
+        {
+          vars: "all",
+          varsIgnorePattern: "^_",
+          args: "after-used",
+          argsIgnorePattern: "^_",
+        },
       ],
     },
     settings: {
