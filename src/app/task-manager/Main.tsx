@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { useTaskStore } from "./useTaskStore";
+import { PrimaryButton } from "@/components/buttons/PrimaryButton";
+import { BasicButton } from "@/components/buttons/BasicButton";
+import { InputText } from "@/components/form/InputText";
 
 export default function Main() {
   const [text, setText] = useState("");
@@ -20,19 +23,12 @@ export default function Main() {
 
       {/* タスク追加フォーム */}
       <div className="flex gap-2">
-        <input
-          type="text"
+        <InputText
           value={text}
-          onChange={(e) => setText(e.target.value)}
-          className="border p-3 rounded w-full focus:ring-2 focus:ring-blue-500"
+          onChange={(e) => setText(e)}
           placeholder="New task"
         />
-        <button
-          onClick={handleAddTask}
-          className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-600 transition"
-        >
-          Add
-        </button>
+        <PrimaryButton label="追加" onSubmit={handleAddTask} />
       </div>
 
       {/* タスク一覧 */}
@@ -52,18 +48,11 @@ export default function Main() {
               {task.text}
             </span>
             <div className="flex gap-2">
-              <button
-                onClick={() => toggleTask(task.id)}
-                className="text-green-500 text-lg cursor-pointer hover:text-green-700 transition"
-              >
-                ✔
-              </button>
-              <button
-                onClick={() => deleteTask(task.id)}
-                className="text-red-500 text-lg cursor-pointer hover:text-red-700 transition"
-              >
-                🗑
-              </button>
+              <PrimaryButton
+                label="完了"
+                onSubmit={() => toggleTask(task.id)}
+              />
+              <BasicButton label="削除" onSubmit={() => deleteTask(task.id)} />
             </div>
           </li>
         ))}
