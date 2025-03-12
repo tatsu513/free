@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "luxon": "^3.5.0",
+    "newsapi": "^2.4.1",
     "next": "15.2.1",
     "qrcode.react": "^4.2.0",
     "react": "^19.0.0",
