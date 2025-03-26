@@ -1,5 +1,6 @@
 import { DateTime } from "luxon";
 import { newsSchema } from "./schema";
+import Link from "next/link";
 
 const now = DateTime.now();
 
@@ -12,13 +13,22 @@ export default async function Home() {
   if (!res.ok) {
     throw new Error("ニュースの取得に失敗しました");
   }
-  const news = newsSchema.parse(await res.json());
+  const news = newsSchema.parse(await res.json()).articles;
+  const filterdNews = news
+    .map((article) => {
+      if (article.urlToImage == null) {
+        return null;
+      }
+      return article;
+    })
+    .filter((article) => article != null);
+
   return (
     <main className="container mt-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {news.articles.map((article, index) => (
-          <a
-            key={index}
+        {filterdNews.map((article) => (
+          <Link
+            key={article.title}
             href={`/news-aggregator/article?url=${encodeURIComponent(article.url)}`}
             rel="noopener noreferrer"
             className="block p-4 border rounded shadow hover:bg-gray-500"
@@ -32,7 +42,7 @@ export default async function Home() {
             )}
             <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
             <p>{article.description}</p>
-          </a>
+          </Link>
         ))}
       </div>
     </main>

@@ -31,7 +31,7 @@ export default function Main() {
         <PrimaryButton
           label="Generate QR Code"
           disabled={!url}
-          onSubmit={handleGenerate}
+          onClick={handleGenerate}
         />
       </div>
       {!!qrValue && <QRCodeDisplay url={url} />}

@@ -28,7 +28,7 @@ export default function Main() {
           onChange={(e) => setText(e)}
           placeholder="New task"
         />
-        <PrimaryButton label="追加" onSubmit={handleAddTask} />
+        <PrimaryButton label="追加" onClick={handleAddTask} />
       </div>
 
       {/* タスク一覧 */}
@@ -48,11 +48,8 @@ export default function Main() {
               {task.text}
             </span>
             <div className="flex gap-2">
-              <PrimaryButton
-                label="完了"
-                onSubmit={() => toggleTask(task.id)}
-              />
-              <BasicButton label="削除" onSubmit={() => deleteTask(task.id)} />
+              <PrimaryButton label="完了" onClick={() => toggleTask(task.id)} />
+              <BasicButton label="削除" onClick={() => deleteTask(task.id)} />
             </div>
           </li>
         ))}

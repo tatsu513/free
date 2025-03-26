@@ -17,7 +17,7 @@ export default function SearchCity(props: Props) {
         value={props.city}
         onChange={(e) => props.setCity(e)}
       />
-      <PrimaryButton label="検索" onSubmit={props.onSubmit} />
+      <PrimaryButton label="検索" onClick={props.onSubmit} />
     </div>
   );
 }

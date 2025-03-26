@@ -1,7 +1,7 @@
 type Props = {
   label: string;
   disabled?: boolean;
-  onSubmit: () => void;
+  onClick: () => void;
   additionalClassName?: string;
 };
 export const PrimaryButton = (props: Props) => {
@@ -10,7 +10,7 @@ export const PrimaryButton = (props: Props) => {
       type="button"
       className={`bg-blue-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-600 transition ${props.additionalClassName}`}
       disabled={props.disabled}
-      onClick={props.onSubmit}
+      onClick={props.onClick}
     >
       {props.label}
     </button>
